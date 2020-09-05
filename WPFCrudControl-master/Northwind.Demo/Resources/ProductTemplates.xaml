@@ -1,0 +1,40 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:importView="clr-namespace:Northwind.Demo.Views.Imports"
+    xmlns:importViewModel="clr-namespace:Northwind.Demo.ViewModel.Imports"
+    xmlns:map="clr-namespace:Northwind.Demo.Views.Map"
+    xmlns:mapViewModel="clr-namespace:Northwind.Demo.ViewModel.Map"
+    xmlns:productViewModels="clr-namespace:Northwind.Demo.ViewModel.Configurations"
+    xmlns:productsViews="clr-namespace:Northwind.Demo.Views.Products">
+
+    <DataTemplate DataType="{x:Type productViewModels:ConfigurationsSearchViewModel}">
+        <productsViews:ProductsSearch />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type productViewModels:ConfigurationAddEditViewModel}">
+        <productsViews:ProductAddEdit />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type importViewModel:ImportAddEditViewModel}">
+        <importView:ImportAddEdit />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type importViewModel:ImportsSearchViewModel}">
+        <importView:ImportsSearch />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type mapViewModel:MapViewModel}">
+        <map:MapList />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type mapViewModel:MapAddEditViewModel}">
+        <map:MapAddEdit />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type mapViewModel:MapSearchViewModel}">
+        <map:MapSearch />
+    </DataTemplate>
+
+
+</ResourceDictionary>

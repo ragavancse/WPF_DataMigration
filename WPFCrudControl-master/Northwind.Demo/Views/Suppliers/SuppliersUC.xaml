@@ -1,0 +1,70 @@
+﻿<UserControl
+    x:Class="Northwind.Demo.Views.Suppliers.SuppliersUC"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:crud="https://genericcodes.com/crud"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="300"
+    d:DesignWidth="1000"
+    DataContext="{Binding Suppliers, Source={StaticResource Locator}}"
+    mc:Ignorable="d">
+    <Grid>
+        <Border Style="{DynamicResource BorderStyle}">
+            <ScrollViewer Margin="5,10,0,10">
+                <StackPanel MinWidth="200">
+                    <crud:GenericCrudControl
+                        x:Name="SupplierCrudControl"
+                        AddButtonStyle="{StaticResource CRUDAddButtonStyle}"
+                        DataGridCellStyle="{StaticResource DataGridCellStyle}"
+                        DataGridColumnHeaderStyle="{StaticResource customDataGridColHeader}"
+                        DataGridRowHeaderStyle="{StaticResource customDataGridRowHeader}"
+                        DataGridRowStyle="{StaticResource DataGridRowStyle}"
+                        DataGridStyle="{StaticResource CRUDDataGridStyle}"
+                        DeleteButtonStyle="{StaticResource CRUDDeleteButtonStyle}"
+                        EnableSortingPaging="{Binding EnableSortingPaging, Mode=TwoWay}"
+                        PagerCurrentPageTextBoxStyle="{StaticResource PagerCurrentPageTextBoxStyle}"
+                        PagerFirstPageBtnStyle="{StaticResource PagerFirstPageButtonStyle}"
+                        PagerLastPageBtnStyle="{StaticResource PagerLastPageButtonStyle}"
+                        PagerNextPageBtnStyle="{StaticResource PagerNextPageButtonStyle}"
+                        PagerPageSizeComboBoxStyle="{StaticResource PagerPageSizeComboBoxStyle}"
+                        PagerPageSizeLabelStyle="{StaticResource PageSizeLabelStyle}"
+                        PagerPreviousPageBtnStyle="{StaticResource PagerPreviousPageButtonStyle}"
+                        PagerTotalRecordLabelStyle="{StaticResource TotalRecordLabelStyle}"
+                        ResetButtonStyle="{StaticResource CRUDResetButtonStyle}"
+                        SearchButtonStyle="{StaticResource CRUDSearchButtonStyle}"
+                        SearchGroupBoxStyle="{StaticResource SupplierSearchGroupBoxStyle}"
+                        SortingByComboBoxStyle="{StaticResource SortingByComboBoxStyle}"
+                        SortingByLabelStyle="{StaticResource SortingByLabelStyle}"
+                        SortingTypeComboBoxStyle="{StaticResource SortingTypeComboBoxStyle}"
+                        SortingTypeLabelStyle="{StaticResource SortingTypeLabelStyle}">
+                        <crud:GenericCrudControl.SortingProperties>
+                            <crud:SortingProperty DisplayName="Company Name" PropertyPath="CompanyName" />
+                            <crud:SortingProperty DisplayName="City" PropertyPath="City" />
+                            <crud:SortingProperty DisplayName="Country" PropertyPath="Country" />
+                        </crud:GenericCrudControl.SortingProperties>
+                        <crud:GenericCrudControl.Columns>
+                            <crud:CustomDataGridColumn BindingExpression="CompanyName" Header="Company Name" />
+                            <crud:CustomDataGridColumn BindingExpression="ContactName" Header="Contact Name" />
+                            <crud:CustomDataGridColumn BindingExpression="ContactTitle" Header="Contact Title" />
+                            <crud:CustomDataGridColumn BindingExpression="Address" Header="Address" />
+                            <crud:CustomDataGridColumn BindingExpression="City" Header="City" />
+                            <crud:CustomDataGridColumn BindingExpression="Region" Header="Region" />
+                            <crud:CustomDataGridColumn
+                                Width="*"
+                                BindingExpression="Country"
+                                Header="Country" />
+                            <crud:CustomDataGridColumn ColumnType="TemplateColumn" Header="Phone">
+                                <crud:CustomDataGridColumn.DataGridColumnTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Phone}" />
+                                    </DataTemplate>
+                                </crud:CustomDataGridColumn.DataGridColumnTemplate>
+                            </crud:CustomDataGridColumn>
+                        </crud:GenericCrudControl.Columns>
+                    </crud:GenericCrudControl>
+                </StackPanel>
+            </ScrollViewer>
+        </Border>
+    </Grid>
+</UserControl>
